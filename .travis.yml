@@ -1,0 +1,33 @@
+sudo: required
+dist: xenial
+language: python
+python: 3.6
+
+before_install:
+  - pip install pip pipenv
+  - pipenv sync
+
+
+jobs:
+   include:
+     - stage: build-master
+       name : "Build master"
+       script:
+        - echo "hello world"
+     - stage: build-pr
+       name : "Build master"
+       script:
+         - echo "build PR" 
+     - stage: build-release
+       name : "Build release"
+       if: branch =~ /release/.*$ 
+       script:
+        - echo "generate changelog.md and push it"
+     - stage: merge-release
+       name: "Merge de la release"
+       if: branch = master
+       script:
+        - export BRANCH=$(if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then echo $TRAVIS_BRANCH; else echo $TRAVIS_PULL_REQUEST_BRANCH; fi)
+        - echo "TRAVIS_BRANCH=$TRAVIS_BRANCH, PR=$PR, BRANCH=$BRANCH"
+
+ 
