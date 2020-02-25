@@ -24,11 +24,11 @@ jobs:
        if: branch =~ /release/.*$ 
        script:
         - echo "generate changelog.md and push it"
-     - stage: merge-release
-       name: "Merge de la release"
-       if: branch = master
-       script:
-        - export BRANCH=$(if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then echo $TRAVIS_BRANCH; else echo $TRAVIS_PULL_REQUEST_BRANCH; fi)
-        - echo "TRAVIS_BRANCH=$TRAVIS_BRANCH, PR=$PR, BRANCH=$BRANCH"
+     #- stage: merge-release
+     #  name: "Merge de la release"
+     #  if: branch = master
+     #  script:
+     #   - export BRANCH=$(if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then echo $TRAVIS_BRANCH; else echo $TRAVIS_PULL_REQUEST_BRANCH; fi)
+     #   - echo "TRAVIS_BRANCH=$TRAVIS_BRANCH, PR=$PR, BRANCH=$BRANCH"
 
  
