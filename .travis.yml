@@ -16,7 +16,7 @@ jobs:
         - echo "build merge d'une PR sur master"
      - stage: build-pr
        name : "Build master"
-       if: branch != master AND type = pull_request
+       if: type = pull_request
        script:
          - echo "build PR" 
      - stage: build-release
