@@ -21,7 +21,7 @@ jobs:
          - echo "build PR" 
      - stage: build-release
        name : "Build release"
-       if: branch =~ /release/.*$ 
+       if: branch =~ release/.*$ 
        script:
         - echo "generate changelog.md and push it"
      #- stage: merge-release
